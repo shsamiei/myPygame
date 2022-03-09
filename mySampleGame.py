@@ -28,9 +28,11 @@ class Game:
 
     def draw(self):
         self.screen.fill(self.black)
-        MyImg = Game.load_image('sq.png')
-        self.screen.blit(MyImg[0] ,(MyImg[1][0] , MyImg[1][1]))
+        self.screen.blit(self.ball , self.ballrect)
         pygame.display.update()
+        pygame.time.delay(1)
+        pygame.event.pump()
+        
 
 
     @staticmethod
@@ -38,3 +40,9 @@ class Game:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
+
+
+g = Game()
+for i in range(10000):
+    g.move_ball()
+    g.draw()
